@@ -53,9 +53,10 @@ public class ReverseGeoCodeService {
                   let name = row[1] as? String ,
                   let adminame = row[3] as? String,
                   let countrycode = row[4] as? String,
-                  let countryname = row[5] as? String,
-                  let latitude = row[6] as? Double,
-                  let longitude = row[7] as? Double
+                  let countryLoc3 = row[5] as? String,
+                  let countryname = row[6] as? String,
+                  let latitude = row[7] as? Double,
+                  let longitude = row[8] as? Double
             else {
                 logger.error("Error in unwraping location for \(latitude),\(longitude)")
                 throw ReverseError.errorUnwraping
@@ -64,6 +65,7 @@ public class ReverseGeoCodeService {
                                        name: name,
                                        adminName: adminame,
                                        countryCode: countrycode,
+                                       countryLoc3: countryLoc3,
                                        countryName: countryname,
                                        latitude: latitude, longitude: longitude)
         }
