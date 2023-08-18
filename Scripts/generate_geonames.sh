@@ -53,7 +53,7 @@ echo "Generating..."
 awk 'BEGIN { FS="\t"; OFS=";" } { gsub("\"", "", $2); gsub(";", "", $2); print $1,$2,$9,$11 }' $DATA > features.tsv
 awk 'BEGIN { FS="\t"; OFS=";" } { print $1,$5,$6 }' $DATA > coordinates.tsv
 awk 'BEGIN { FS="\t"; OFS=";" } { split($1, id, "."); gsub("\"", "", $2); gsub(";", "", $2); print id[1],id[2],$2 }' $ADMIN1 > admin1.tsv
-grep -vE '^#' $COUNTRIES | awk 'BEGIN { FS="\t"; OFS=";" } { print $1,$5 }' > countries.tsv
+grep -vE '^#' $COUNTRIES | awk 'BEGIN { FS="\t"; OFS=";" } { print $1,$2,$5 }' > countries.tsv
 
 echo '
 CREATE TABLE coordinates(
@@ -80,6 +80,7 @@ CREATE TABLE admin1(
 
 CREATE TABLE countries(
   id TEXT,
+  loc3 TEXT,
   name TEXT,
   PRIMARY KEY (id)
 );
@@ -91,6 +92,7 @@ CREATE VIEW everything AS
     admin1.id AS admin1_id,
     admin1.name AS admin1_name,
     countries.id AS country_id,
+    countries.loc3 AS country_loc3,
     countries.name AS country_name,
     coordinates.latitude AS latitude,
     coordinates.longitude AS longitude
