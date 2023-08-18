@@ -18,6 +18,8 @@ public struct LocationDescription {
     public let adminName: String
     /// international code of the country
     public let countryCode: String
+    /// loc3 code of the country
+    public let countryLoc3: String
     /// name of the country
     public let countryName: String
     /// exact latitude of the POI
