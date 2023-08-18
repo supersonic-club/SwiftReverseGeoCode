@@ -37,8 +37,8 @@ public class ReverseGeoCodeService {
                                SELECT * FROM everything WHERE id IN (
                                  SELECT feature_id
                                  FROM coordinates
-                                 WHERE latitude BETWEEN :lat - 1.5 AND :lat + 1.5
-                                 AND longitude BETWEEN :long  - 1.5 AND :long  + 1.5
+                                 WHERE latitude BETWEEN :lat - 3.5 AND :lat + 3.5
+                                 AND longitude BETWEEN :long  - 3.5 AND :long  + 3.5
                                  ORDER BY (
                                    (:lat - latitude) * (:lat - latitude) +
                                      (:long - longitude) * (:long - longitude) * :scale
